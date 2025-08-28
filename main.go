@@ -22,14 +22,11 @@ func main() {
 		log.Fatalf("error reading config: %v", err)
 	}
 
-	// Open a connection to the database, and store it in the state struct:
-	// In main(), load in your database URL to the config struct and sql.Open() a connection to your database:
-	dbURL := cfg.DBURL
-	db, err := sql.Open("postgres", dbURL)
+	db, err := sql.Open("postgres", cfg.DBURL)
 	if err != nil {
-		log.Fatalf("error opening db: %v", err)
+		log.Fatalf("error connecting to db: %v", err)
 	}
-	// Use your generated database package to create a new *database.Queries, and store it in your state struct:
+	defer db.Close()
 	dbQueries := database.New(db)
 
 	programState := &state{
@@ -41,7 +38,6 @@ func main() {
 		registeredCommands: make(map[string]func(*state, command) error),
 	}
 	cmds.register("login", handlerLogin)
-	// Create a register handler and register it with the commands. Usage: `go run . register lane`
 	cmds.register("register", handlerRegister)
 
 	if len(os.Args) < 2 {
