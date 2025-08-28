@@ -16,7 +16,7 @@ func Read() (Config, error) {
 		return Config{}, err
 	}
 
-	path += "/gatorconfig.json"
+	path += "/.gatorconfig.json"
 	jsonData, err := os.ReadFile(path)
 	if err != nil {
 		return Config{}, err
@@ -37,7 +37,7 @@ func (cfg Config) SetUser(UserName string) error {
 	if err != nil {
 		return err
 	}
-	path += "/gatorconfig.json"
+	path += "/.gatorconfig.json"
 
 	data, err := json.Marshal(cfg)
 	if err != nil {
