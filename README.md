@@ -20,10 +20,15 @@ $`sudo -u postgres psql`
 -goose postgres <connection_string> up-  
 cd into the sql/schema directory and run:  
 `goose postgres "postgres://postgres:postgres@localhost:5432/gator" down`   
-`goose postgres "postgres://postgres:postgres@localhost:5432/gator" up`   
+`goose postgres "postgres://postgres:postgres@localhost:5432/gator" up`  
+useful after making a new table, resting the db (there's a reset command now)
 
 ### How to register a user?  
 `go run . register lane`
 
 ### How to login as a registered user?  
 `go run . login lane`
+
+### How to migrations
+made a new table in sql\schema\<file>
+
