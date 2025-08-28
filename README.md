@@ -10,7 +10,6 @@ Run $`sqlc generate` from the root of your project.
 It should create a new package of go code in `internal/database`.  
 files: db.go, models.go, users.sql.go  
 
-
 ### How to get into gator psql?  
 $`sudo -u postgres psql`  
 `\c gator`  
