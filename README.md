@@ -31,3 +31,6 @@ useful after making a new table, resting the db (there's a reset command now)
 ### How to migrations
 made a new table in sql\schema\<file>
 
+
+todo: extra practice with the middleware() wrapper
+
